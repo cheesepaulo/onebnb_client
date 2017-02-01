@@ -9,10 +9,11 @@ export class PropertyBoxComponent implements OnInit {
 
   public wishlisted: boolean = false;
   @Input() photo: string;
-  @Input() name: string;
+  @Input() name:  string;
   @Input() price: string;
   @Input() stars: string;
   @Input() whish: string;
+  @Input() property_id: string;
 
   constructor() { }
 
