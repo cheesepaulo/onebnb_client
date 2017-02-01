@@ -26,6 +26,8 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
 import { PropertyDetailsComponent } from './property/property-details/property-details.component';
 import { ReservationBoxComponent } from './shared/reservation-box/reservation-box.component';
 import { LightboxComponent } from './shared/lightbox/lightbox.component';
+import { CommentBoxComponent } from './shared/comment-box/comment-box.component';
+import { UserDetailBoxComponent } from './shared/user-detail-box/user-detail-box.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { LightboxComponent } from './shared/lightbox/lightbox.component';
     PropertyBoxComponent,
     PropertyDetailsComponent,
     ReservationBoxComponent,
-    LightboxComponent
+    LightboxComponent,
+    CommentBoxComponent,
+    UserDetailBoxComponent
   ],
   imports: [
     BrowserModule,

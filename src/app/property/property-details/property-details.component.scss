@@ -4,3 +4,19 @@
   background-size: 100%;
   background-position: center center;
 }
+
+.details{
+  margin-top: 40px;
+  .details-icons{
+    font-size: 50px;
+  }
+  .stars {
+    font-size: 13px;
+  }
+  .space-body{
+    margin-top: 20px;
+  }
+  .strike{
+    text-decoration:line-through;
+  }
+}

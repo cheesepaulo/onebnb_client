@@ -14,7 +14,12 @@ export class PropertyDetailsComponent implements OnInit {
   constructor(private PropertiesService: PropertiesService, private route: ActivatedRoute, private router: Router) { }
 
   private property: Property;
+  private address: any = [];
+  private details: any = [];
+  private facilities: any = [];
   private photos: any = [];
+  private comments: any = [];
+  private profile: any = [];
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -23,6 +28,11 @@ export class PropertyDetailsComponent implements OnInit {
           data => {
             this.property = data;
             this.photos = data.property.photos;
+            this.comments = data.property.comments;
+            this.profile =  data.property.user;
+            this.details =  data.property;
+            this.address =  data.property.address;
+            this.facilities = data.property.facility;
           },
           err => {this.router.navigateByUrl('/');}
         );
