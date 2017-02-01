@@ -11,8 +11,8 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 })
 export class ResultsComponent implements OnInit {
 
-  private properties: Property[] = []; string
-  private mapPins: Array<{ lat: number, lng: number, draggable: boolean, label: string, icon: string, photo: string, price: number}> = [];
+  private properties: Property[] = [];
+  private mapPins: Array<{ lat: number, lng: number, draggable: boolean, label: string, icon: string, photo: string, price: number, id: any}> = [];
   private lat: number = -13.4963582;
   private lng: number = -69.8079044;
 
@@ -39,6 +39,7 @@ export class ResultsComponent implements OnInit {
     let i = 0;
     for (let p of this.properties) {
       this.mapPins.push({
+        id: p['property']['id'],
         lat: +p['property']['address']['latitude'],
         lng: +p['property']['address']['longitude'],
         draggable: false,
