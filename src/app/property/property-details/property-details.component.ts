@@ -14,12 +14,16 @@ export class PropertyDetailsComponent implements OnInit {
   constructor(private PropertiesService: PropertiesService, private route: ActivatedRoute, private router: Router) { }
 
   private property: Property;
+  private photos: any = [];
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.PropertiesService.getProperty(params['id'])
         .subscribe(
-          data => {this.property = data;},
+          data => {
+            this.property = data;
+            this.photos = data.property.photos;
+          },
           err => {this.router.navigateByUrl('/');}
         );
     });
