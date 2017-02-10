@@ -20,6 +20,8 @@ export class PropertyDetailsComponent implements OnInit {
   private photos: any = [];
   private comments: any = [];
   private profile: any = [];
+  private lat: number = 0;
+  private lng: number = 0;
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -33,6 +35,8 @@ export class PropertyDetailsComponent implements OnInit {
             this.details =  data.property;
             this.address =  data.property.address;
             this.facilities = data.property.facility;
+            this.lat = +data.property.address.latitude;
+            this.lng = +data.property.address.longitude;
           },
           err => {this.router.navigateByUrl('/');}
         );

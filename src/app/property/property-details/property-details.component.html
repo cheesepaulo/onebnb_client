@@ -121,19 +121,37 @@
       <div class="row">
         <div class="col-md-12">
           <h3>Seu Anfitrião</h3>
-          <div class="col-md-3 col-md-offset-1">
-            <app-user-detail-box  [photo]="profile.photo"
-                                  [name]="profile.name"
-                                  [address]="profile.address"
-                                  [userid]="profile.id"></app-user-detail-box>
+          <div class="row">
+            <div class="col-md-3 col-md-offset-1">
+              <app-user-detail-box  [photo]="profile.photo"
+                                    [name]="profile.name"
+                                    [address]="profile.address"
+                                    [userid]="profile.id"></app-user-detail-box>
+            </div>
+            <div class="col-md-7 col-md-offset-1 send-message-box">
+              <app-send-message></app-send-message>
+            </div>
           </div>
-          <div class="col-md-9"></div>
         </div>
       </div>
       <hr>
     </div>
     <div class="col-md-4">
       <app-reservation-box></app-reservation-box>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Localização</h3>
+      <sebm-google-map class="sebm-google-map-container" [latitude]="lat" [longitude]="lng" [zoom]="16">
+        <sebm-google-map-marker
+            [latitude]="lat - 0.003"
+            [longitude]="lng"
+            [label]=""
+            [iconUrl]="'http://bootcamp.onebitcode.com/wp-content/uploads/2017/01/map_icon.png'">
+        </sebm-google-map-marker>
+      </sebm-google-map>
     </div>
   </div>
 </div>
