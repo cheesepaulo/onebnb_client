@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { PropertiesService } from '../properties.service';
 
 @Component({
   selector: 'app-property-box',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PropertyBoxComponent implements OnInit {
 
-  public wishlisted: boolean = false;
+  @Input() wishlisted: boolean = false;
   @Input() photo: string;
   @Input() name:  string;
   @Input() price: string;
@@ -15,15 +16,24 @@ export class PropertyBoxComponent implements OnInit {
   @Input() whish: string;
   @Input() property_id: string;
 
-  constructor() { }
+  constructor(private PropertiesService: PropertiesService) { }
 
   ngOnInit() {
   }
 
   wishlist(status, property_id){
-    // Nesta parte nós precisamos usar um Service para altrar a Wishlist do nosso usuário
-    // Também precisamos emitir uma mensagem dizendo que apenas usuários logados podem fazer isso
-    console.log(status);
-    this.wishlisted = status;
+    if(status == true){
+      this.PropertiesService.addToWishlist(property_id)
+        .subscribe(data => {
+          this.wishlisted = status;
+        }
+      );
+    }else{
+      this.PropertiesService.removeToWishlist(property_id)
+        .subscribe(data => {
+          this.wishlisted = status;
+        }
+      );
+    }
   }
 }

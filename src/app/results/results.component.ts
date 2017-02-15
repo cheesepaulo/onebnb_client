@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import { Property } from '../shared/property';
 import { PropertiesService } from '../shared/properties.service';
 import {Router, ActivatedRoute, Params} from '@angular/router';
+import { UsersService } from '../shared/users.service';
+import { Angular2TokenService, A2tUiModule} from 'angular2-token';
 
 
 @Component({
@@ -15,8 +17,9 @@ export class ResultsComponent implements OnInit {
   private mapPins: Array<{ lat: number, lng: number, draggable: boolean, label: string, icon: string, photo: string, price: number, id: any}> = [];
   private lat: number = -13.4963582;
   private lng: number = -69.8079044;
+  private wishlist: any;
 
-  constructor(private PropertiesService: PropertiesService, private route: ActivatedRoute) { }
+  constructor(private PropertiesService: PropertiesService, private route: ActivatedRoute, private UsersService: UsersService, private _tokenService: Angular2TokenService) { }
 
   ngOnInit() {
     // Método que pega os parâmetros da URL
@@ -32,6 +35,26 @@ export class ResultsComponent implements OnInit {
           }
         );
       });
+
+      // Pega a wishlist do usuário se estiver logado
+      if(this._tokenService.userSignedIn() == true)
+      {
+        this.UsersService.getWishlist()
+          .subscribe(data => {
+            this.wishlist = data;
+          }
+        );
+      }
+  }
+
+  wishlisted(id)
+  {
+    //FIX melhorar esse loop com um for each
+    if(this.wishlist)
+      for(var i = 0; i < this.wishlist.length; i++) {
+        if(this.wishlist[i]['property']['id'] == id) {return true}
+      }
+    return false;
   }
 
   formateToMap() {

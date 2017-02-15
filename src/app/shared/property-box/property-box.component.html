@@ -23,12 +23,12 @@
   <div class="property-indication-wishlist pull-right">
     <div class="col-md-12 text-right">
       <div *ngIf="wishlisted == true">
-        <button (click)="wishlist(false, 1)" class="wishlist-btn">
+        <button (click)="wishlist(false, property_id)" class="wishlist-btn">
           <i class="fa fa-heart signed"></i>
         </button>
       </div>
       <div *ngIf="wishlisted != true">
-        <button href="" (click)="wishlist(true, 1)" class="wishlist-btn">
+        <button href="" (click)="wishlist(true, property_id)" class="wishlist-btn">
           <i class="fa fa-heart-o unsigned"></i>
         </button>
       </div>

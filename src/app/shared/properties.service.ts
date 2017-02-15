@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 // Incluimos o URLSearchParams para nos permitir passar parâmetros na chamada GET
 import { Http, URLSearchParams } from '@angular/http';
+import { Angular2TokenService, A2tUiModule} from 'angular2-token';
+
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -10,14 +12,9 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class PropertiesService {
+  private url: string = "properties.json";
 
-  constructor(private http: Http) { }
-  
-  // Com esse método é possível autocompletar seus inputs
-  autocomplete(){
-    return this.http.get(environment.api_base_url + 'autocomplete.json')
-      .map(res => res.json());
-  }
+  constructor(private http: Http, private _tokenService: Angular2TokenService) { }
 
   // Incluimos nosso método de search
   searchProperties(params){
@@ -28,13 +25,29 @@ export class PropertiesService {
       .map(res => res.json());
   }
 
+  addToWishlist(id){
+    //faz uma chamada pra api passando os dados do usuário logado (this._tokenService.)
+    return this._tokenService.post('properties/' + id + '/wishlist', {})
+      .map(res => res.json());
+  }
+
+  removeToWishlist(id){
+    return this._tokenService.delete('properties/' + id + '/wishlist')
+      .map(res => res.json());
+  }
+
   getProperties(){
     return this.http.get(environment.api_base_url + 'properties.json')
       .map(res => res.json());
   }
 
+  autocomplete(){
+    return this.http.get(environment.api_base_url + 'autocomplete.json')
+      .map(res => res.json());
+  }
+
   getProperty(id){
-    return this.http.get(environment.api_base_url + 'properties/' + id + '.json')
+    return this.http.get(environment.api_base_url + 'properties/' + id)
       .map(res => res.json());
   }
 
