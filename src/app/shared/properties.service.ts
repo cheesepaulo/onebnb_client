@@ -12,6 +12,12 @@ import { environment } from '../../environments/environment';
 export class PropertiesService {
 
   constructor(private http: Http) { }
+  
+  // Com esse método é possível autocompletar seus inputs
+  autocomplete(){
+    return this.http.get(environment.api_base_url + 'autocomplete.json')
+      .map(res => res.json());
+  }
 
   // Incluimos nosso método de search
   searchProperties(params){
