@@ -16,6 +16,11 @@ export class PropertiesService {
 
   constructor(private http: Http, private _tokenService: Angular2TokenService) { }
 
+  getFeatured(){
+    return this.http.get(environment.api_base_url + 'featured.json')
+      .map(res => res.json());
+  }
+
   // Incluimos nosso método de search
   searchProperties(params){
     let parameters = new URLSearchParams();

@@ -16,7 +16,7 @@ export class PropertyBoxComponent implements OnInit {
   @Input() whish: string;
   @Input() property_id: string;
 
-  constructor(private PropertiesService: PropertiesService) { }
+  constructor(private PropertiesService: PropertiesService, ) { }
 
   ngOnInit() {
   }

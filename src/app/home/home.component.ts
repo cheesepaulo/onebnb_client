@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Property } from '../shared/property';
 import { PropertiesService } from '../shared/properties.service';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,12 +14,10 @@ export class HomeComponent implements OnInit {
   constructor(private PropertiesService: PropertiesService) { }
 
   ngOnInit() {
-    this.PropertiesService.getProperties()
-      .subscribe(data => this.properties = data);
+    this.PropertiesService.getFeatured()
+      .subscribe(data => {
+        this.properties = data;
+      }
+    );
   }
-
-  search(query){
-    this.PropertiesService.searchProperties(query).subscribe(data => this.properties = data);
-  }
-
 }
