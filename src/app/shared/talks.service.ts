@@ -29,3 +29,4 @@ export class TalksService {
       return this._tokenService.post('talks/messages', {'body': body, 'property_id': property_id}).map(res => res.json());
     }
   }
+}
