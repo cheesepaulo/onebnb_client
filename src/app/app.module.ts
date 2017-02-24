@@ -37,6 +37,7 @@ import { UsersService } from './shared/users.service';
 import { ReservationService } from './shared/reservation.service';
 import { PropertiesService } from './shared/properties.service';
 import { TalksService } from './shared/talks.service';
+import { MenuComponent } from './shared/menu/menu.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { TalksService } from './shared/talks.service';
     LightboxComponent,
     CommentBoxComponent,
     UserDetailBoxComponent,
-    SendMessageComponent
+    SendMessageComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

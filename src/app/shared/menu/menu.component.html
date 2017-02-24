@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-11 col-md-offset-1">
+    <div class="col-md-2 text-center link-button" [ngClass]="{'active': selected == 'dashboard'}">
+      <b>
+        <a href="#" class="title">DASHBOARD</a>
+      </b>
+    </div>
+    <div class="col-md-2 text-center link-button" [ngClass]="{'active': selected == 'my_properties'}">
+      <b>
+        <a href="#" class="title">MEUS ANÚNCIOS</a>
+      </b>
+    </div>
+    <div class="col-md-2 text-center link-button" [ngClass]="{'active': selected == 'my_trips'}">
+      <b>
+        <a href="#" class="title">MINHAS VIAGENS</a>
+      </b>
+    </div>
+    <div class="col-md-2 text-center link-button" [ngClass]="{'active': selected == 'messages'}">
+      <b>
+        <a [routerLink]="['/talks']" class="title">MENSAGENS</a>
+      </b>
+    </div>
+    <div class="col-md-2 text-center link-button" [ngClass]="{'active': selected == 'perfil'}">
+      <b>
+        <a href="#" class="title">CONTA</a>
+      </b>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <hr>
+</div>

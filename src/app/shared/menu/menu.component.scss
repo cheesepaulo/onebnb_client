@@ -1,0 +1,17 @@
+@import "src/styles.scss";
+
+.active{
+  background-color: $template-color-1;
+  a{
+    color: $template-color-6;
+  }
+}
+
+.title{
+  color: $template-color-2;
+}
+
+.link-button{
+  height: 30px;
+  padding-top: 5px;
+}
