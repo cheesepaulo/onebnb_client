@@ -1,0 +1,23 @@
+@import "src/styles.scss";
+
+.messages{
+  margin-top: 40px;
+}
+
+.user-icon{
+  font-size: 80px;
+}
+
+.profile-picture{
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.message-text{
+  color: $template-color-2;
+}

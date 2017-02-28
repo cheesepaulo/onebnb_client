@@ -1,0 +1,40 @@
+<app-menu selected="messages"></app-menu>
+<div class="row">
+  <div class="row title">
+    <h3>Mensagens</h3>
+  </div>
+  <div *ngFor="let t of talks" >
+    <a href="" [routerLink]="['/talks/chat', t.id]" class="message-text">
+      <div class="row messages">
+        <div class="col-md-1">
+          <div *ngIf="t.user.photo == null || t.user.photo == ''">
+            <i class="fa fa-user-circle user-icon"></i>
+          </div>
+          <div *ngIf="t.user.photo.url != null">
+            <div class="profile-picture" [ngStyle]="{'background-image': 'url(' + t.user.photo.url + ')'}">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 text-center">
+          <div class="row">
+            <b>{{ t.user.name }}</b>
+          </div>
+          <div class="row">
+            {{ t.message.created_at | date:"dd/MM/yy"}}
+          </div>
+        </div>
+        <div class="col-md-6">
+          {{ t.message.body }}
+        </div>
+        <div class="col-md-2 col-offset-md-1 text-center" *ngIf="t.reservation != null || t.reservation == ''">
+          <div class="row">
+            <b>{{ t.reservation.status }}</b>
+          </div>
+          <div class="row">{{ t.reservation.price | currency:"BRL":true }}</div>
+          <div class="row">{{ t.reservation.interval }} diárias</div>
+        </div>
+      </div>
+    </a>
+    <div class="row"><hr></div>
+  </div>
+</div>
