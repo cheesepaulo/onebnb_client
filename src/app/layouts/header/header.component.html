@@ -19,6 +19,13 @@
     <ul class="nav navbar-nav">
       <li><a href="/">TORNE-SE UM ANFITRIÃO</a></li>
     </ul>
+
+    <div *ngIf="_tokenService.currentUserData != null">
+      <ul class="nav navbar-nav">
+        <li><a [routerLink]="['/talks']">MENSAGENS</a></li>
+      </ul>
+    </div>
+
     <ul class="nav navbar-nav">
       <li><a href="/">AJUDA</a></li>
     </ul>
