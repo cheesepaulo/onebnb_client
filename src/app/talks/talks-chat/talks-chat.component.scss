@@ -1,0 +1,56 @@
+@import "src/styles.scss";
+
+.user-icon{
+  font-size: 80px;
+}
+
+.profile-picture{
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.profile-picture-perfil{
+  width: 120px;
+  height: 120px;
+}
+
+.photo{
+  margin-top: 20px;
+}
+
+.title{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.description{
+  margin-top: 40px;
+}
+
+.date{
+  margin-top: 20px;
+}
+
+.resume{
+  margin-top: 20px;
+}
+
+.address{
+  margin-top: 20px;
+}
+
+.btn-send-message{
+  margin-top: 20px;
+}
+
+.messages{
+  margin-top: 50px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height:400px;
+}
