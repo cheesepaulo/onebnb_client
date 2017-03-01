@@ -18,12 +18,18 @@ export class TalksService {
     return this._tokenService.get('talks?page=' + page).map(res => res.json());
   }
 
+  poolingMessages(id){
+    return Observable.interval(4000).flatMap(() => {
+      return this.getMessages(id);
+    })
+  }
+
   getMessages(id){
     return this._tokenService.get('talks/' + id + '/messages', {}).map(res => res.json());
   }
 
-  createMessage(id, property_id, body){
-    if(id){
+  createMessage(id, body, property_id){
+    if(id != null){
       return this._tokenService.post('talks/' + id + '/messages', {'body': body}).map(res => res.json());
     }else{
       return this._tokenService.post('talks/messages', {'body': body, 'property_id': property_id}).map(res => res.json());
