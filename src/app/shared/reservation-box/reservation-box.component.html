@@ -6,7 +6,7 @@
           <input type="text" class="form-control" name="inputBeginDate" [value]="begindate" />
           <span class="input-group-addon" dropdownToggle><i class="fa fa-calendar"></i></span>
           <div class="dropdown-menu" role="menu" aria-labelledby="btn-append-to-body">
-            <datepicker name="test" [showWeeks]="false" [(ngModel)]="begindate"></datepicker>
+            <datepicker name="test" [showWeeks]="false" [(ngModel)]="begindate" (click)="validateDate"></datepicker>
           </div>
         </div>
       </div>
@@ -21,13 +21,9 @@
       </div>
     </div>
     <div class="col-md-12 search">
-      <div class="col-md-6">
-        <select class="form-control col-md-12" placeholder="Hospedes" (change)="filter('guests', $event.target.value)">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+      <div class="col-md-6" *ngIf="guests_array.length > 1">
+        <select class="form-control col-md-12" placeholder="Hospedes" type="number" [(ngModel)]="guests" (change)="filter('guests', $event.target.value)">
+          <option *ngFor="let guest of guests_array" [value]="guest.num">{{guest.name}}</option>
         </select>
       </div>
       <div class="col-md-6">
@@ -37,10 +33,10 @@
     <div class="col-md-12 results">
       <div class="row">
         <div class="col-md-6">
-          R$160 x 2 diárias
+          {{ price | currency:"BRL":true }} x {{ intervalOfDays() }} diárias
         </div>
         <div class="col-md-6 text-right">
-          R$320
+          {{ price * intervalOfDays() | currency:"BRL":true }}
         </div>
       </div>
       <hr/>
@@ -49,7 +45,7 @@
           Taxa de serviço
         </div>
         <div class="col-md-6 text-right">
-          R$63
+          {{ (price * intervalOfDays()) * 0.1 | currency:"BRL":true }}
         </div>
       </div>
       <hr/>
@@ -58,12 +54,12 @@
           <b>Total</b>
         </div>
         <div class="col-md-6 text-right">
-          <b>R$383</b>
+          <b>{{ (price * intervalOfDays()) * 1.1 | currency:"BRL":true }}</b>
         </div>
       </div>
     </div>
     <div class="col-md-12 reserve">
-      <button class="btn btn-success-custom col-md-12">RESERVAR</button>
+      <a (click)="goToReservation()" class="btn btn-success-custom col-md-12">RESERVAR</a>
     </div>
   </div>
 </div>
