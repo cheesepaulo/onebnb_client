@@ -1,0 +1,134 @@
+<app-menu selected="my_trips"></app-menu>
+<div class="row my_trips">
+  <div class="row" *ngIf="next.length > 0">
+    <div class="row">
+      <h4 class="title">Próximas Viagens</h4>
+    </div>
+    <div class="row">
+      <div *ngFor="let p of pending" >
+        <div class="col-md-4 property-box">
+          <div class="col-md-12">
+            <app-property-box
+              [property_id] = "p.id"
+              [name]  = "p.name"
+              [price] = "p.price"
+              [photo] = "p.photos[0]"
+              [wishlisted] = "null"
+            ></app-property-box>
+
+            <p class="pull-right">10/10/10</p>
+
+            <div class="row send_and_cancel">
+              <div class="col-md-5 col-md-offset-1">
+                <button class="btn btn-success-custom">
+                  ENVIAR MENSAGEM
+                </button>
+              </div>
+              <div class="col-md-5 col-md-offset-1">
+                <button class="btn btn-default">
+                  CANCELAR
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="next.length > 0">
+    <hr>
+  </div>
+
+  <div *ngIf="pending.length > 0">
+    <div class="row">
+      <h4 class="title">Viagens Pendentes</h4>
+    </div>
+    <div class="row">
+      <div *ngFor="let p of pending" >
+        <div class="col-md-4 property-box">
+          <div class="col-md-12">
+            <app-property-box
+              [property_id] = "p.id"
+              [name]  = "p.name"
+              [price] = "p.price"
+              [photo] = "p.photos[0]"
+              [wishlisted] = "null"
+            ></app-property-box>
+
+            <p class="pull-right">10/10/10</p>
+
+            <div class="row send_and_cancel">
+              <div class="col-md-5 col-md-offset-1">
+                <button class="btn btn-success-custom">
+                  ENVIAR MENSAGEM
+                </button>
+              </div>
+              <div class="col-md-5 col-md-offset-1">
+                <button class="btn btn-default">
+                  CANCELAR
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="pending.length > 0">
+    <hr>
+  </div>
+
+  <div class="row" *ngIf="previous.length > 0">
+    <div class="row">
+      <h4 class="title">Viagens Anteriores</h4>
+    </div>
+    <div class="row">
+      <div *ngFor="let p of previous" >
+        <div class="col-md-4 property-box">
+          <div class="col-md-12">
+            <app-property-box
+              [property_id] = "p.id"
+              [name]  = "p.name"
+              [price] = "p.price"
+              [photo] = "p.photos[0]"
+              [wishlisted] = "null"
+            ></app-property-box>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="previous.length > 0">
+    <hr>
+  </div>
+
+  <div class="row" *ngIf="wishlist.length > 0">
+    <div class="row">
+      <h4 class="title">Wishlist</h4>
+    </div>
+    <div class="row">
+      <div *ngFor="let p of wishlist" >
+        <div class="col-md-4 property-box wish_{{ p.id }}">
+          <div class="col-md-12">
+            <button class="wishlist-btn" (click)="removeFromWishlist(p)">
+              <b>Remover</b>
+            </button>
+
+            <app-property-box
+              [property_id] = "p.id"
+              [name]  = "p.name"
+              [price] = "p.price"
+              [photo] = "p.photos[0]"
+              [wishlisted] = "null"
+            ></app-property-box>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

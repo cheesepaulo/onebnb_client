@@ -15,19 +15,16 @@ export class LoginComponent implements OnInit {
   private _output: any;
 
   ngOnInit() {
-  }
+    }
 
-  onSubmit() {
+    onSubmit() {
     this._output = null;
 
     this._tokenService.signIn(this._signInData).subscribe(
       res => {
         this._signInData = <SignInData>{};
         this._output = res;
-        console.log('res');
-        console.log(res);
-        console.log('signData');
-        console.log(this._signInData);
+        location.reload();
       }, error => {
         this._signInData = <SignInData>{};
         this._output = error;

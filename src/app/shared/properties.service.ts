@@ -21,6 +21,11 @@ export class PropertiesService {
       .map(res => res.json());
   }
 
+  myTrips(){
+    return this._tokenService.get('trips')
+      .map(res => res.json());
+  }
+
   // Incluimos nosso método de search
   searchProperties(params){
     let parameters = new URLSearchParams();
