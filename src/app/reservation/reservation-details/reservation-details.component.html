@@ -1,0 +1,126 @@
+<div class="row">
+  <div class="row main-image" [ngStyle]="{'background-image': 'url(' + photos[0] + ')'}">
+  </div>
+  <div class="row">
+    <div class="col-md-12 details">
+      <h3>1. Detalhes da Propriedade</h3>
+    </div>
+    <div class="col-md-12 details">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col-md-12">
+              <h4>{{ details.name }}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+              <p>{{ address.city }}, {{ address.country }}</p>
+            </div>
+            <div class="col-md-4 stars">
+              <i class="fa" [ngClass]="{'fa-star': details.rating >= 1, 'fa-star-o': details.rating < 1}"></i>
+              <i class="fa" [ngClass]="{'fa-star': details.rating >= 2, 'fa-star-o': details.rating < 2}"></i>
+              <i class="fa" [ngClass]="{'fa-star': details.rating >= 3, 'fa-star-o': details.rating < 3}"></i>
+              <i class="fa" [ngClass]="{'fa-star': details.rating >= 4, 'fa-star-o': details.rating < 4}"></i>
+              <i class="fa" [ngClass]="{'fa-star': details.rating == 5, 'fa-star-o': details.rating < 5}"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="col-md-2 text-center">
+            <div class="row">
+              <i class="fa fa-home details-icons"></i>
+            </div>
+            <div class="row" [ngSwitch]="details.accommodation_type">
+              <p *ngSwitchCase="'whole_house'">Casa Inteira</p>
+              <p *ngSwitchCase="'whole_bedroom'">Quarto Inteiro</p>
+              <p *ngSwitchCase="'shared_bedroom'">Quarto Compartilhado</p>
+            </div>
+          </div>
+          <div class="col-md-2 text-center">
+            <div class="row">
+              <b>Check In</b>
+            </div>
+            <div class="row">
+              {{ begindate }}
+            </div>
+          </div>
+          <div class="col-md-2 text-center">
+            <div class="row">
+              <b>Check Out</b>
+            </div>
+            <div class="row">
+              {{ enddate }}
+            </div>
+          </div>
+          <div class="col-md-2 text-center">
+            <div class="row">
+              <b>Hospedes</b>
+            </div>
+            <div class="row form-group" *ngIf="guests_array.length > 1">
+              <select class="form-control" type="number" [(ngModel)]="guests">
+                <option *ngFor="let guest of guests_array" [value]="guest.num">{{guest.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-2">
+              {{ details.price | currency:"BRL":true }} X {{ intervalOfDays }} Diárias
+            </div>
+            <div class="col-md-1">
+              {{ details.price * intervalOfDays | currency:"BRL":true }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              Taxa de serviço
+            </div>
+            <div class="col-md-1">
+              {{ (details.price * intervalOfDays) * 0.1 | currency:"BRL":true }}
+            </div>
+          </div>
+          <div class="row total">
+            <div class="col-md-2">
+              <h4>
+                <b>Total</b>
+              </h4>
+            </div>
+            <div class="col-md-1">
+              <h4>
+                <b>{{ (details.price * intervalOfDays) * 1.1 | currency:"BRL":true }}</b>
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <h3>Seu Anfitrião</h3>
+          <div class="row">
+            <div class="col-md-3 col-md-offset-1">
+              <app-user-detail-box  [photo]="profile.photo"
+                                    [name]="profile.name"
+                                    [address]="profile.address"
+                                    [userid]="profile.id"></app-user-detail-box>
+            </div>
+            <div class="col-md-7 col-md-offset-1 send-message-box">
+              <app-send-message></app-send-message>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row next">
+    <div class="col-md-2 col-md-offset-5">
+      <button class="btn btn-success-custom">
+        PRÓXIMO
+      </button>
+    </div>
+  </div>
+</div>

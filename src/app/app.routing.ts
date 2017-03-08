@@ -10,6 +10,7 @@ import { PropertyDetailsComponent } from './property/property-details/property-d
 import { TalksListComponent } from './talks/talks-list/talks-list.component';
 import { TalksChatComponent } from './talks/talks-chat/talks-chat.component';
 import { PropertyTripsComponent } from './property/property-trips/property-trips.component';
+import { ReservationDetailsComponent } from './reservation/reservation-details/reservation-details.component';
 
 
 // Cria nossas Rotas
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
   { path: 'property/:id', component: PropertyDetailsComponent },
   { path: 'talks', component: TalksListComponent },
   { path: 'talks/chat/:id', component: TalksChatComponent },
-  { path: 'trips', component: PropertyTripsComponent }
+  { path: 'trips', component: PropertyTripsComponent },
+  { path: 'property/:id/reservation', component: ReservationDetailsComponent },
 ];
 
 // Exporta a constante routing para importarmos ela no arquivo app.module.ts

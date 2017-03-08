@@ -41,6 +41,7 @@ import { MenuComponent } from './shared/menu/menu.component';
 import { TalksListComponent } from './talks/talks-list/talks-list.component';
 import { TalksChatComponent } from './talks/talks-chat/talks-chat.component';
 import { PropertyTripsComponent } from './property/property-trips/property-trips.component';
+import { ReservationDetailsComponent } from './reservation/reservation-details/reservation-details.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { PropertyTripsComponent } from './property/property-trips/property-trips
     MenuComponent,
     TalksListComponent,
     TalksChatComponent,
-    PropertyTripsComponent
+    PropertyTripsComponent,
+    ReservationDetailsComponent
   ],
   imports: [
     BrowserModule,
