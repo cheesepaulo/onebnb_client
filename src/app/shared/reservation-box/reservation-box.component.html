@@ -6,7 +6,7 @@
           <input type="text" class="form-control" name="inputBeginDate" [value]="begindate" />
           <span class="input-group-addon" dropdownToggle><i class="fa fa-calendar"></i></span>
           <div class="dropdown-menu" role="menu" aria-labelledby="btn-append-to-body">
-            <datepicker name="test" [showWeeks]="false" [(ngModel)]="begindate" (click)="validateDate"></datepicker>
+            <datepicker name="test" [showWeeks]="false" [(ngModel)]="begindate" (click)="(blockSearchBtn())"></datepicker>
           </div>
         </div>
       </div>
@@ -15,7 +15,7 @@
           <input type="text" class="form-control" name="inputBeginDate" [value]="enddate" />
           <span class="input-group-addon" dropdownToggle><i class="fa fa-calendar"></i></span>
           <div class="dropdown-menu" role="menu" aria-labelledby="btn-append-to-body">
-            <datepicker name="test" [showWeeks]="false" [(ngModel)]="enddate"></datepicker>
+            <datepicker name="test" [showWeeks]="false" [(ngModel)]="enddate" (click)="(blockSearchBtn())"></datepicker>
           </div>
         </div>
       </div>
@@ -27,7 +27,7 @@
         </select>
       </div>
       <div class="col-md-6">
-        <button class="btn btn-success col-md-12">BUSCAR</button>
+        <button (click)="is_available()" class="btn btn-success col-md-12">BUSCAR</button>
       </div>
     </div>
     <div class="col-md-12 results">
@@ -59,7 +59,7 @@
       </div>
     </div>
     <div class="col-md-12 reserve">
-      <a (click)="goToReservation()" class="btn btn-success-custom col-md-12">RESERVAR</a>
+      <a [ngClass]="{disabled : !search_btn}" (click)="search_btn && goToReservation()" class="btn btn-success-custom col-md-12">RESERVAR</a>
     </div>
   </div>
 </div>

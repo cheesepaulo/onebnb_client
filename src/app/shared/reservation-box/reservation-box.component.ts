@@ -1,6 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
-
+import { PropertiesService } from '../properties.service';
+import {NotificationsService} from 'angular2-notifications';
 
 @Component({
   selector: 'app-reservation-box',
@@ -15,9 +16,10 @@ export class ReservationBoxComponent implements OnInit {
   @Input() max: number;
   @Input() property_id: number;
   @Input() price: any;
+  public search_btn: boolean = false;
 
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private PropertiesService: PropertiesService, private router: Router, private route: ActivatedRoute, private NotificationsService: NotificationsService) {}
 
   ngOnChanges() {
     this.guests_array = [];
@@ -26,13 +28,14 @@ export class ReservationBoxComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-    console.log(this.formateDate(this.begindate));
-  }
+  ngOnInit() {  }
 
   intervalOfDays() {
     return (this.enddate.getTime()  - this.begindate.getTime()) / 86400000;
-    // pega o tempo em segundos e divide pela quantidade de segundos de um dia resultar em um inteiro
+  }
+
+  blockSearchBtn(){
+    this.search_btn = false;
   }
 
   formateDate(date){
@@ -44,14 +47,51 @@ export class ReservationBoxComponent implements OnInit {
       month = "0"+month;
     var year = date.getFullYear();
     return day+"/"+month+"/"+year;
-}
+  }
 
-  goToReservation() {
+  goToReservation(){
     let baseurl = 'property/' + this.property_id + '/reservation';
     this.router.navigateByUrl(baseurl + '?checkin=' + this.formateDate(this.begindate) + "&" +
                                         'checkout=' + this.formateDate(this.enddate)   + "&" +
                                         'intervalOfDays=' + this.intervalOfDays()      + "&" +
                                         'guests=' + this.guests
                              );
+  }
+
+  is_available(){
+    this.PropertiesService.is_available(this.formateDate(this.begindate), this.formateDate(this.enddate), this.property_id)
+      .subscribe(data => {
+        if(data.success == true)
+        {
+          this.search_btn = true;
+          this.NotificationsService.success(
+            'Reserve Agora',
+            'Disponível',
+            {
+                timeOut: 5000,
+                showProgressBar: true,
+                pauseOnHover: false,
+                clickToClose: true,
+                maxLength: 10,
+                lastOnBottom: true
+            }
+          );
+        }else{
+          this.search_btn = false;
+          this.NotificationsService.error(
+            'Indisponível',
+            ':(',
+            {
+                timeOut: 5000,
+                showProgressBar: true,
+                pauseOnHover: false,
+                clickToClose: true,
+                maxLength: 10,
+                lastOnBottom: true
+            }
+          );
+        }
+      }
+    );
   }
 }
