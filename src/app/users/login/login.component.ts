@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Angular2TokenService, SignInData } from 'angular2-token';
-
+import {NotificationsService} from 'angular2-notifications';
 
 @Component({
   selector: 'app-login',
@@ -9,15 +9,15 @@ import { Angular2TokenService, SignInData } from 'angular2-token';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _tokenService: Angular2TokenService) { }
+  constructor(private _tokenService: Angular2TokenService, private NotificationsService: NotificationsService) { }
 
   private _signInData: SignInData = <SignInData>{};
   private _output: any;
 
   ngOnInit() {
-    }
+  }
 
-    onSubmit() {
+  onSubmit() {
     this._output = null;
 
     this._tokenService.signIn(this._signInData).subscribe(
@@ -26,8 +26,18 @@ export class LoginComponent implements OnInit {
         this._output = res;
         location.reload();
       }, error => {
-        this._signInData = <SignInData>{};
-        this._output = error;
+        this.NotificationsService.error(
+          'Erro no Login',
+          'Tente novamente!',
+          {
+              timeOut: 5000,
+              showProgressBar: true,
+              pauseOnHover: true,
+              clickToClose: true,
+              maxLength: 30,
+              lastOnBottom: true
+          }
+        );
       }
     );
   }

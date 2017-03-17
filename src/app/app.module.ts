@@ -43,6 +43,8 @@ import { TalksChatComponent } from './talks/talks-chat/talks-chat.component';
 import { PropertyTripsComponent } from './property/property-trips/property-trips.component';
 import { ReservationDetailsComponent } from './reservation/reservation-details/reservation-details.component';
 
+import {SimpleNotificationsModule} from 'angular2-notifications';
+
 
 @NgModule({
   declarations: [
@@ -84,7 +86,8 @@ import { ReservationDetailsComponent } from './reservation/reservation-details/r
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
     AgmCoreModule.forRoot({apiKey: 'AIzaSyCRxFy7Flsc2exiivtIfRxirHw-HSs2g7g'}),
-    Ng2AutoCompleteModule
+    Ng2AutoCompleteModule,
+    SimpleNotificationsModule.forRoot()
   ],
   providers: [PropertiesService, UsersService, Angular2TokenService, ReservationService, TalksService],
   bootstrap: [AppComponent]
