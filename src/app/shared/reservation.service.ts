@@ -19,4 +19,8 @@ export class ReservationService {
     return this._tokenService.post('reservations/' + id + '/evaluation', {"evaluation": {"comment": comment, "rating": rating}})
       .map(res => res.json());
   }
+
+  cancel(id){
+    return this._tokenService.put('reservations/' + id + '/cancel', {}).map(res => res.json());
+  }
 }

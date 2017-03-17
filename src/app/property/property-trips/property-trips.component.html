@@ -5,7 +5,7 @@
       <h4 class="title">Próximas Viagens</h4>
     </div>
     <div class="row">
-      <div *ngFor="let p of pending" >
+      <div *ngFor="let p of next" >
         <div class="col-md-4 property-box">
           <div class="col-md-12">
             <app-property-box
@@ -16,7 +16,7 @@
               [wishlisted] = "null"
             ></app-property-box>
 
-            <p class="pull-right">10/10/10</p>
+            <p class="pull-right">{{ p.reservation.checkin_date | date }}</p>
 
             <div class="row send_and_cancel">
               <div class="col-md-5 col-md-offset-1">
@@ -25,9 +25,9 @@
                 </button>
               </div>
               <div class="col-md-5 col-md-offset-1">
-                <button class="btn btn-default">
+                <a (click)="cancelActive(p)" href="" class="btn btn-default">
                   CANCELAR
-                </button>
+                </a>
               </div>
             </div>
 
@@ -58,7 +58,7 @@
               [wishlisted] = "null"
             ></app-property-box>
 
-            <p class="pull-right">10/10/10</p>
+            <p class="pull-right">{{ p.reservation.checkin_date | date }}</p>
 
             <div class="row send_and_cancel">
               <div class="col-md-5 col-md-offset-1">
@@ -67,9 +67,9 @@
                 </button>
               </div>
               <div class="col-md-5 col-md-offset-1">
-                <button class="btn btn-default">
+                <a (click)="cancelPending(p)" href="" class="btn btn-default">
                   CANCELAR
-                </button>
+                </a>
               </div>
             </div>
           </div>
