@@ -1,0 +1,276 @@
+<app-menu selected="my_properties"></app-menu>
+
+<form [formGroup]="propertyForm" (ngSubmit)="save()">
+
+  <!-- Form Name -->
+  <h3 class="title">{{ title }}</h3>
+
+  <!-- Text input required -->
+  <div class="row">
+    <div class="col-md-6">
+      <div class="col-md-12">
+        <h4>Dados da Propriedade</h4>
+        <hr>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group col-md-12">
+            <label class="col-md-12 control-label" for="textinput required ">Título do seu anúncio</label>
+            <div class="col-md-12">
+              <input required  id="textinput required "  type="text" placeholder="Casa de Campo..." class="form-control input required -md" formControlName="name">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group col-md-12">
+            <label class="col-md-12 control-label" for="textinput required ">Descrição</label>
+            <div class="col-md-12">
+              <textarea id="textinput required "  type="text" placeholder="É uma propriedade..." class="form-control input required -md" formControlName="description"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group col-md-12">
+            <label class="col-md-12 control-label" for="textinput required ">Preço da diária</label>
+            <div class="col-md-4">
+              <input required  id="textinput required "  type="number" step="0.01" placeholder="10" class="form-control input required -md" formControlName="price">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+
+        <div class="col-md-12">
+          <h4>Endereço</h4>
+          <hr>
+        </div>
+
+        <div class="col-md-6">
+          <!-- Text input required -->
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-label" for="textinput required ">País</label>
+            <div class="col-md-12">
+              <input required  id="textinput required "  type="text" placeholder="Brasil" class="form-control input required -md" formControlName="country" >
+            </div>
+          </div>
+
+          <!-- Text input required -->
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-label" for="textinput required ">Estado</label>
+            <div class="col-md-12">
+            <input required  id="textinput required "  type="text" placeholder="Rio Grande do Norte" class="form-control input required -md" formControlName="state" >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <!-- Text input required -->
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-label" for="textinput required ">Cidade</label>
+            <div class="col-md-12">
+            <input required  id="textinput required "  type="text" placeholder="Duas Pontes" class="form-control input required -md" formControlName="city" >
+            </div>
+          </div>
+
+          <!-- Text input required -->
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-label" for="textinput required ">Bairro</label>
+            <div class="col-md-12">
+            <input required  id="textinput required "  type="text" placeholder="Casa Azul" class="form-control input required -md" formControlName="neighborhood" >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <!-- Text input required -->
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-label" for="textinput required ">Rua</label>
+            <div class="col-md-12">
+            <input required  id="textinput required "  type="text" placeholder="Duas Pontes" class="form-control input required -md" formControlName="street" >
+            </div>
+          </div>
+
+          <!-- Text input required -->
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-label" for="textinput required ">Número</label>
+            <div class="col-md-12">
+              <input required  id="textinput required "  type="text" placeholder="Casa Azul" class="form-control input required -md" formControlName="number" >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <!-- Text input required -->
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-label" for="textinput required ">Cep</label>
+            <div class="col-md-12">
+            <input required  id="textinput required "  type="text" placeholder="Duas Pontes" class="form-control input required -md" formControlName="zipcode" >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <h4>Comodidades</h4>
+        <hr>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group col-md-12">
+            <div class="col-md-1">
+              <input type="checkbox"formControlName="wifi">
+            </div>
+            <label class="col-md-8 control-label" for="textinput ">Wifi</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group col-md-12">
+            <div class="col-md-1">
+              <input type="checkbox"formControlName="washing_machine">
+            </div>
+            <label class="col-md-8 control-label" for="textinput ">Máquina de lavar</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group col-md-12">
+            <div class="col-md-1">
+              <input  type="checkbox"formControlName="heater">
+            </div>
+            <label class="col-md-8 control-label" for="textinput ">Aquecedor</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group col-md-12">
+            <div class="col-md-1">
+              <input type="checkbox"formControlName="air_conditioning">
+            </div>
+            <label class="col-md-8 control-label" for="textinput ">Ar Condicionado</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group col-md-12">
+            <div class="col-md-1">
+              <input type="checkbox"formControlName="refrigerator">
+            </div>
+            <label class="col-md-8 control-label" for="textinput ">Geladeira</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group col-md-12">
+            <div class="col-md-1">
+              <input type="checkbox"formControlName="clothes_iron">
+            </div>
+            <label class="col-md-8 control-label" for="textinput ">Ferro de Passar</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group col-md-12">
+            <div class="col-md-1">
+              <input  type="checkbox"formControlName="towels">
+            </div>
+            <label class="col-md-8 control-label" for="textinput ">Toalhas</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-6">
+      <div class="col-md-12">
+        <h4>Tipo de acomodação</h4>
+        <hr>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <div class="col-md-4">
+            <select class="form-control" formControlName="accommodation_type">
+              <option value="whole_house">Casa Inteira</option>
+              <option value="whole_bedroom">Quarto Inteiro</option>
+              <option value="shared_bedroom">Quarto Compartilhado</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <h4>Ambiente</h4>
+        <hr>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group col-md-12">
+            <label class="col-md-12 control-label" for="textinput required ">Max. Hospedes</label>
+            <div class="col-md-10">
+              <input required  id="textinput required "  type="number" placeholder="10" class="form-control input required -md" formControlName="guest_max">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group col-md-12">
+            <label class="col-md-12 control-label" for="textinput required ">Camas</label>
+            <div class="col-md-10">
+              <input required  id="textinput required "  type="number" placeholder="10" class="form-control input required -md" formControlName="beds">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group col-md-12">
+            <label class="col-md-12 control-label" for="textinput required ">Quartos</label>
+            <div class="col-md-10">
+              <input required  id="textinput required "  type="number" placeholder="10" class="form-control input required -md" formControlName="bedroom">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group col-md-12">
+            <label class="col-md-12 control-label" for="textinput required ">Banheiros</label>
+            <div class="col-md-10">
+              <input required  id="textinput required "  type="number" placeholder="10" class="form-control input required -md" formControlName="bathroom">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-12">
+        <h4>Fotos</h4>
+        <hr>
+      </div>
+
+    </div>
+  </div>
+  <!-- Button -->
+  <div class="form-group col-md-8">
+    <div class="pull-right">
+      <!-- Ainda vamos criar o component que o cancelar redireciona :) -->
+      <a [routerLink]="['property/list']" class="btn btn-default">Cancelar</a>
+      <button type="submit" class="btn btn-success-custom">Salvar</button>
+    </div>
+  </div>
+</form>

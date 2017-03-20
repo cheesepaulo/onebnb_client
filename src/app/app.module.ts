@@ -45,6 +45,7 @@ import { UserShowComponent } from './users/user-show/user-show.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { PropertyFormComponent } from './property/property-form/property-form.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     TalksChatComponent,
     PropertyTripsComponent,
     ReservationDetailsComponent,
-    UserShowComponent
+    UserShowComponent,
+    PropertyFormComponent
   ],
   imports: [
     BrowserModule,
