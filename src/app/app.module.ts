@@ -9,14 +9,16 @@ import { HomeComponent } from './home/home.component';
 import { routing } from './app.routing';
 
 import { Property } from './shared/property';
+import { PropertiesService } from './shared/properties.service';
+import { UsersService } from './shared/users.service';
+import { ReservationService } from './shared/reservation.service';
+import { TalksService } from './shared/talks.service';
 
-// External Libs
 import { Angular2TokenService, A2tUiModule} from 'angular2-token';
 import { RegisterComponent } from './users/register/register.component';
 import { LoginComponent } from './users/login/login.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
-import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { ResultsComponent } from './results/results.component';
 import { SearchComponent } from './shared/search/search.component';
 import { PaginationComponent } from './shared/pagination/pagination.component';
@@ -30,13 +32,8 @@ import { LightboxComponent } from './shared/lightbox/lightbox.component';
 import { CommentBoxComponent } from './shared/comment-box/comment-box.component';
 import { UserDetailBoxComponent } from './shared/user-detail-box/user-detail-box.component';
 import { SendMessageComponent } from './shared/send-message/send-message.component';
-import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
-// Services
-import { UsersService } from './shared/users.service';
-import { ReservationService } from './shared/reservation.service';
-import { PropertiesService } from './shared/properties.service';
-import { TalksService } from './shared/talks.service';
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { MenuComponent } from './shared/menu/menu.component';
 import { TalksListComponent } from './talks/talks-list/talks-list.component';
 import { TalksChatComponent } from './talks/talks-chat/talks-chat.component';
@@ -44,7 +41,10 @@ import { PropertyTripsComponent } from './property/property-trips/property-trips
 import { ReservationDetailsComponent } from './reservation/reservation-details/reservation-details.component';
 
 import {SimpleNotificationsModule} from 'angular2-notifications';
+import { UserShowComponent } from './users/user-show/user-show.component';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -71,7 +71,8 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
     TalksListComponent,
     TalksChatComponent,
     PropertyTripsComponent,
-    ReservationDetailsComponent
+    ReservationDetailsComponent,
+    UserShowComponent
   ],
   imports: [
     BrowserModule,
@@ -85,11 +86,14 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
     PaginationModule.forRoot(),
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
-    AgmCoreModule.forRoot({apiKey: 'AIzaSyCRxFy7Flsc2exiivtIfRxirHw-HSs2g7g'}),
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCRxFy7Flsc2exiivtIfRxirHw-HSs2g7g'
+    }),
     Ng2AutoCompleteModule,
     SimpleNotificationsModule.forRoot()
   ],
-  providers: [PropertiesService, UsersService, Angular2TokenService, ReservationService, TalksService],
+  providers: [PropertiesService, Angular2TokenService, UsersService, ReservationService, TalksService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -18,4 +18,22 @@ export class UsersService {
   getWishlist(){
     return this._tokenService.get('users/wishlist', {}).map(res => res.json());
   }
+
+  show(){
+    return this._tokenService.get('current_user', {}).map(res => res.json());
+  }
+
+  update(params, photo){
+    return this._tokenService.put('users/', {"user":
+                                              {"name": params.name,
+                                               "email": params.email,
+                                               "gender": params.gender,
+                                               "description": params.description,
+                                               "phone": params.phone, photo: photo},
+                                               address: {"country": params.country,
+                                                         "state": params.state,
+                                                         "city": params.city
+                                                        }
+                                            }).map(res => res.json());
+  }
 }

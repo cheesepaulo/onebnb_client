@@ -1,3 +1,103 @@
-<p>
-  user-edit works!
-</p>
+<app-menu selected="perfil"></app-menu>
+
+<form [formGroup]="editForm" (ngSubmit)="save()" *ngIf="user">
+
+  <!-- Form Name -->
+  <h3 class="title">Editar Perfil</h3>
+
+
+  <div class="col-md-12 profile-box">
+    <div class="col-md-12" *ngIf="user.photo">
+      <div *ngIf="user.photo == null || user.photo == ''">
+        <i class="fa fa-user-circle user-icon"></i>
+      </div>
+      <div *ngIf="user.photo.url != null">
+        <div class="profile-picture" [ngStyle]="{'background-image': 'url(' + img + ')'}">
+        </div>
+      </div>
+      <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".jpeg,.png,.jpg">
+    </div>
+  </div>
+
+
+  <!-- Text input-->
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group col-md-12">
+        <label class="col-md-2 control-label" for="textinput">Nome</label>
+        <div class="col-md-6">
+        <input id="textinput"  type="text" placeholder="José Paulo" class="form-control input-md" formControlName="name">
+        </div>
+      </div>
+
+      <!-- Text input-->
+      <div class="form-group col-md-12">
+        <label class="col-md-2 control-label" for="textinput">Email</label>
+        <div class="col-md-6">
+        <input id="textinput"  type="text" placeholder="youremail@something.com" class="form-control input-md" formControlName="email" >
+        </div>
+      </div>
+
+      <!-- Text input-->
+      <div class="form-group col-md-12">
+        <label class="col-md-2 control-label" for="textinput">Telefone</label>
+        <div class="col-md-6">
+        <input id="textinput"  type="text" placeholder="(+55) 11 997098765 " class="form-control input-md" formControlName="phone" >
+        </div>
+      </div>
+
+      <!-- Select Basic -->
+      <div class="form-group col-md-12">
+        <label class="col-md-2 control-label" for="selectbasic">Sexo</label>
+        <div class="col-md-6">
+          <select id="selectbasic" name="selectbasic" class="form-control" formControlName="gender" >
+            <option value="homem">Masculino</option>
+            <option value="mulher">Feminino</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-6" *ngIf="user.address">
+      <!-- Text input-->
+      <div class="form-group col-md-12">
+        <label class="col-md-2 control-label" for="textinput">País</label>
+        <div class="col-md-6">
+        <input id="textinput"  type="text" placeholder="Brazil" class="form-control input-md" formControlName="country" >
+        </div>
+      </div>
+
+      <!-- Text input-->
+      <div class="form-group col-md-12">
+        <label class="col-md-2 control-label" for="textinput">Cidade</label>
+        <div class="col-md-6">
+        <input id="textinput"  type="text" placeholder="São Paulo" class="form-control input-md" formControlName="state">
+        </div>
+      </div>
+
+      <!-- Text input-->
+      <div class="form-group col-md-12">
+        <label class="col-md-2 control-label" for="textinput">Estado</label>
+        <div class="col-md-6">
+        <input id="textinput"  type="text" placeholder="Campinas" class="form-control input-md" formControlName="city" >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <!-- Search input-->
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="searchinput">Descrição</label>
+      <div class="col-md-10">
+        <textarea placeholder="Sou um ótimo Guest e já viajei o mundo todo!" class="form-control input-md" formControlName="description"></textarea>
+      </div>
+    </div>
+  </div>
+  <!-- Button -->
+  <div class="form-group col-md-12">
+    <div class="pull-right">
+      <button type="submit" class="btn btn-success-custom">Salvar</button>
+    </div>
+  </div>
+</form>

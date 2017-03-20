@@ -1,0 +1,111 @@
+<app-menu selected="perfil"></app-menu>
+<div class="row perfil" *ngIf="user">
+  <div class="row">
+
+    <div class="col-md-3">
+      <h3 class="title">Seus Dados, {{user.name}}</h3>
+    </div>
+    <div class="col-md-3 pull-right">
+      <a [routerLink]="['/user/edit']" class="btn btn-success-custom">
+        Editar
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" *ngIf="user.photo">
+      <div *ngIf="user.photo == null || user.photo == ''">
+        <i class="fa fa-user-circle user-icon"></i>
+      </div>
+      <div *ngIf="user.photo.url != null">
+        <div class="profile-picture" [ngStyle]="{'background-image': 'url(' + user.photo.url + ')'}">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="col-md-12">
+            <b>Nome</b>
+          </div>
+          <div class="col-md-12">
+            <p>{{ user.name }}</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="col-md-12">
+            <b>Sobre você</b>
+          </div>
+          <div class="col-md-12">
+            <p>{{ user.description }}</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="col-md-12">
+              <b>Email</b>
+            </div>
+            <div class="col-md-12">
+              <p>{{ user.email }}</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="col-md-12">
+              <b>Telefone</b>
+            </div>
+            <div class="col-md-12">
+              <p>{{ user.phone }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div>
+        <div class="row" *ngIf="user.address">
+          <div class="col-md-3">
+            <div class="col-md-12">
+              <b>País</b>
+            </div>
+            <div class="col-md-12">
+              <p>{{ user.address.country }}</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="col-md-12">
+              <b>Estado</b>
+            </div>
+            <div class="col-md-12">
+              <p>{{ user.address.state }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row" *ngIf="user.address">
+          <div class="col-md-3">
+            <div class="col-md-12">
+              <b>Cidade</b>
+            </div>
+            <div class="col-md-12">
+              <p>{{ user.address.city }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="account">
+    <div class="row">
+      <h3 class="title">Conta</h3>
+    </div>
+    <div class="col-md-12">
+      <button class="btn btn-success-custom">
+        Cancelar Sua Conta
+      </button>
+    </div>
+  </div>
+</div>

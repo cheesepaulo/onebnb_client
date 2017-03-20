@@ -10,12 +10,10 @@
     <a class="navbar-brand" href="/">Logo</a>
   </div>
   <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" class="collapse navbar-collapse" (collapsed)="collapsed($event)" (expanded)="expanded($event)" [collapse]="isMenuCollapsed">
-    <form class="navbar-form navbar-left" role="search">
-      <div class="form-group">
-        <app-search></app-search>
-      </div>
-    </form>
+  <div class="collapse navbar-collapse" class="collapse navbar-collapse" (collapsed)="collapsed($event)" [collapse]="isMenuCollapsed">
+    <div class="navbar-form navbar-left" role="search">
+      <app-search></app-search>
+    </div>
     <ul class="nav navbar-nav">
       <li><a href="/">TORNE-SE UM ANFITRIÃO</a></li>
     </ul>
@@ -46,6 +44,13 @@
     <div *ngIf="_tokenService.currentUserData != null">
       <ul class="nav navbar-nav">
         <li><a href (click)="signOut()">SAIR</a></li>
+      </ul>
+    </div>
+    <div *ngIf="_tokenService.currentUserData != null" class="pull-right">
+      <ul class="nav navbar-nav">
+        <li>
+          <a [routerLink]="['/user/show']">PROFILE</a>
+        </li>
       </ul>
     </div>
   </div>
