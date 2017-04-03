@@ -7,7 +7,7 @@
                <span class="icon-bar"></span>
                <span class="icon-bar"></span>
                </button>
-    <a class="navbar-brand" href="/">Logo</a>
+    <a class="navbar-brand" [routerLink]="['/']">Logo</a>
   </div>
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" class="collapse navbar-collapse" (collapsed)="collapsed($event)" [collapse]="isMenuCollapsed">
@@ -21,6 +21,12 @@
     <div *ngIf="_tokenService.currentUserData != null">
       <ul class="nav navbar-nav">
         <li><a [routerLink]="['/talks']">MENSAGENS</a></li>
+      </ul>
+    </div>
+
+    <div *ngIf="_tokenService.currentUserData != null">
+      <ul class="nav navbar-nav">
+        <li><a [routerLink]="['/property/list']">ANÚNCIOS</a></li>
       </ul>
     </div>
 

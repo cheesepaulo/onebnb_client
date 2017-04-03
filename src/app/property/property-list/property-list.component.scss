@@ -1,0 +1,42 @@
+@import "src/styles.scss";
+
+.title{
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.property_title{
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.exclude_and_edit{
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.main-image{
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center center;
+}
+
+.property-box{
+  padding-right: 5px;
+  padding-left: 5px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.btn-custom-grey{
+  background-color: $template-color-2;
+  border-color: $template-color-2;
+  color: $template-color-6;
+}
+
+@media only screen and (min-width : 992px) {
+  .edit_property{
+    margin-left: -10px;
+  }
+}

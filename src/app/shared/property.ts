@@ -39,6 +39,7 @@ export class Property {
     this.rating = propertyInfo.rating;
     this.status = propertyInfo.status;
     this.user_id = propertyInfo.user_id;
+    this.photos = propertyInfo.photos;
 
     this.user = new User(propertyInfo.user);
     this.facility = new Facility(propertyInfo.facility);

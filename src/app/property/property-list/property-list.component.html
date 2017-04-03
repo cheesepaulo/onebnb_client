@@ -1,0 +1,50 @@
+<app-menu selected="my_properties"></app-menu>
+<div class="col-md-12 my_properties">
+  <div class="row">
+    <div class="row">
+      <h4 class="title">Minhas Propriedades</h4>
+    </div>
+    <div class="col-md-3 col-md-offset-9">
+      <button class="btn btn-success-custom" [routerLink]="['/property/new']">Novo Anúncio</button>
+    </div>
+    <div class="row">
+      <div *ngFor="let p of properties" >
+        <div class="col-md-6 property-box">
+          <div class="col-md-12">
+            <app-property-box
+              [property_id] = "p.id"
+              [name]  = "p.name"
+              [price] = "p.price"
+              [photo] = "p.photos[0]"
+              [wishlisted] = "null"
+            ></app-property-box>
+
+
+            <div class="row exclude_and_edit">
+              <div class="col-md-4 col-xs-7 col-md-offset-1">
+                <button class="btn btn-success-custom col-md-11 col-xs-12" (click)="delete(p)">
+                  EXCLUIR
+                </button>
+              </div>
+              <div class="col-md-4 col-xs-7 edit_property">
+                <a href="" class="btn btn-default col-md-10 col-xs-12" [routerLink]="['/property', p.id, 'edit']">
+                  EDITAR
+                </a>
+              </div>
+            </div>
+
+            <div class="row reservations">
+              <div class="col-md-12 col-xs-7">
+                <a href="" class="btn btn-custom-grey col-md-7 col-md-offset-1 col-xs-12" [routerLink]="['/property', p.id, 'reservation']">
+                  VER RESERVAS
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -60,6 +60,11 @@ export class PropertiesService {
       .map(res => res.json());
   }
 
+  myProperties(){
+  return this._tokenService.get('my_properties')
+    .map(res => res.json());
+  }
+
   autocomplete(){
     return this.http.get(environment.api_base_url + 'autocomplete.json')
       .map(res => res.json());

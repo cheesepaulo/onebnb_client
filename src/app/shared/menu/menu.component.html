@@ -7,7 +7,7 @@
     </div>
     <div class="col-md-2 text-center link-button" [ngClass]="{'active': selected == 'my_properties'}">
       <b>
-        <a href="#" class="title">MEUS ANÚNCIOS</a>
+        <a [routerLink]="['/property/list']" href="#" class="title">MEUS ANÚNCIOS</a>
       </b>
     </div>
     <div class="col-md-2 text-center link-button" [ngClass]="{'active': selected == 'my_trips'}">
