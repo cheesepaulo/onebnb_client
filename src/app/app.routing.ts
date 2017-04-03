@@ -24,7 +24,7 @@ const appRoutes: Routes = [
   { path: 'user/show', component: UserShowComponent, canActivate: [Angular2TokenService] },
   { path: 'results', component: ResultsComponent },
   { path: 'property/new', component: PropertyFormComponent, canActivate: [Angular2TokenService]},
-  { path: 'property/list', component: PropertyListComponent, canActivate: [Angular2TokenService]}
+  { path: 'property/list', component: PropertyListComponent, canActivate: [Angular2TokenService]},
   { path: 'property/:id', component: PropertyDetailsComponent },
   { path: 'talks', component: TalksListComponent , canActivate: [Angular2TokenService]},
   { path: 'talks/chat/:id', component: TalksChatComponent , canActivate: [Angular2TokenService]},
