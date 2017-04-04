@@ -15,6 +15,22 @@ export class ReservationService {
 
   constructor(private http: Http, private _tokenService: Angular2TokenService) { }
 
+  accept(id){
+    return this._tokenService.put('reservations/' + id + '/accept', {}).map(res => res.json());
+  }
+
+  refuse(id){
+    return this._tokenService.put('reservations/' + id + '/refuse', {}).map(res => res.json());
+  }
+
+  getByProperty(id){
+    let params = new URLSearchParams();
+    params.set('id', id);
+
+    return this._tokenService.get('get_by_property', {search: params})
+      .map(res => res.json());
+  }
+
   addEvaluation(id, comment, rating){
     return this._tokenService.post('reservations/' + id + '/evaluation', {"evaluation": {"comment": comment, "rating": rating}})
       .map(res => res.json());

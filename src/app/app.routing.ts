@@ -14,6 +14,7 @@ import { Angular2TokenService } from 'angular2-token';
 import { UserShowComponent } from './users/user-show/user-show.component';
 import { PropertyFormComponent } from './property/property-form/property-form.component';
 import { PropertyListComponent } from './property/property-list/property-list.component';
+import { PropertyReservationsComponent } from './property/property-reservations/property-reservations.component';
 
 // Cria nossas Rotas
 const appRoutes: Routes = [
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
   { path: 'trips', component: PropertyTripsComponent , canActivate: [Angular2TokenService]},
   { path: 'property/:id/reservation', component: ReservationDetailsComponent },
   { path: 'property/:id/edit', component: PropertyFormComponent, canActivate: [Angular2TokenService]},
+  { path: 'property/:id/reservations', component: PropertyReservationsComponent, canActivate: [Angular2TokenService]}
 ];
 
 // Exporta a constante routing para importarmos ela no arquivo app.module.ts

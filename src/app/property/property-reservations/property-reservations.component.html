@@ -1,0 +1,278 @@
+<app-menu selected="my_properties"></app-menu>
+<div class="col-md-12 my_properties">
+  <div class="col-md-3 col-md-offset-9">
+    <button class="btn btn-success-custom" [routerLink]="['/property/new']">Novo Anúncio</button>
+  </div>
+  <div class="row" *ngIf="reservations_pending.length > 0">
+    <div class="row">
+      <div class="col-md-4">
+        <h4 class="title">Solicitações de Reserva</h4>
+      </div>
+    </div>
+    <div class="row reservation">
+      <div *ngFor="let r of reservations_pending">
+        <div class="col-md-6 col-xs-12">
+          <h4>{{ property.name }}</h4>
+          <h5>{{ property.address.city }}, {{ property.address.state }}, {{ property.address.country }}</h5>
+          <div class="date">
+            <div class="col-md-3">
+              <div class="row">
+                <b>Checkin Date</b>
+              </div>
+              <div class="row">
+                {{ r.checkin_date | date }}
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="row">
+                <b>Checkout Date</b>
+              </div>
+              <div class="row">
+                {{ r.checkout_date | date }}
+              </div>
+            </div>
+          </div>
+          <div class="">
+            <div class="col-md-3 price col-xs-6">
+              <div class="row">
+                R${{ property.price }} x {{ r.interval_of_days }}
+              </div>
+              <div class="row">
+                Taxa de Serviço
+              </div>
+              <div class="row">
+                <b>Total</b>
+              </div>
+            </div>
+            <div class="col-md-9 price col-xs-6">
+              <div class="row">
+                {{ property.price * r.interval_of_days | currency:"BRL":true }}
+              </div>
+              <div class="row">
+                {{ property.price * r.interval_of_days * 0.1 | currency:"BRL":true }}
+              </div>
+              <div class="row">
+                <b>{{ property.price * r.interval_of_days * 1.1 | currency:"BRL":true }}</b>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xs-12" style="border-left: 1px dashed #333;">
+          <div class="col-md-12 col-xs-6" *ngIf="r.user.photo">
+            <div *ngIf="r.user.photo == null || r.user.photo == ''">
+              <i class="fa fa-user-circle user-icon"></i>
+            </div>
+            <div *ngIf="r.user.photo.url != null">
+              <div class="profile-picture" [ngStyle]="{'background-image': 'url(' + r.user.photo.url + ')'}">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 text-center col-xs-6">
+            <div class="row">
+              <h4>{{ r.user.name }}</h4>
+            </div>
+            <div class="row" *ngIf="r.user.address">
+              <div *ngIf="r.user.state">{{ r.user.address.state }},</div> <div *ngIf="r.user.country">{{ r.user.address.country }}</div>
+            </div>
+            <div class="row text-center">
+              <a [routerLink]="['/user', r.user.id]">Ver Pefil</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="col-md-3 col-md-offset-3 col-xs-6">
+            <button class="btn btn-success-custom col-md-12" (click)="accept(r)">
+              Aceitar
+            </button>
+          </div>
+          <div class="col-md-3 col-xs-6">
+            <button class="btn btn-default col-md-12" (click)="refuse(r)">
+              Recusar
+            </button>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row active" *ngIf="reservations_active.length > 0">
+    <div class="row">
+      <div class="col-md-4 title">
+        <h4 class="title">Reservas Confirmadas</h4>
+      </div>
+    </div>
+    <div class="row reservation">
+      <div *ngFor="let r of reservations_active">
+        <div class="col-md-6 col-xs-12">
+          <h4>{{ property.name }}</h4>
+          <h5>{{ property.address.city }}, {{ property.address.state }}, {{ property.address.country }}</h5>
+          <div class="date">
+            <div class="col-md-3">
+              <div class="row">
+                <b>Checkin Date</b>
+              </div>
+              <div class="row">
+                {{ r.checkin_date | date }}
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="row">
+                <b>Checkout Date</b>
+              </div>
+              <div class="row">
+                {{ r.checkout_date | date }}
+              </div>
+            </div>
+          </div>
+          <div class="">
+            <div class="col-md-3 price col-xs-6">
+              <div class="row">
+                R${{ property.price }} x {{ r.interval_of_days }}
+              </div>
+              <div class="row">
+                Taxa de Serviço
+              </div>
+              <div class="row">
+                <b>Total</b>
+              </div>
+            </div>
+            <div class="col-md-9 price col-xs-6">
+              <div class="row">
+                {{ property.price * r.interval_of_days | currency:"BRL":true }}
+              </div>
+              <div class="row">
+                {{ property.price * r.interval_of_days * 0.1 | currency:"BRL":true }}
+              </div>
+              <div class="row">
+                <b>{{ property.price * r.interval_of_days * 1.1 | currency:"BRL":true }}</b>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xs-12" style="border-left: 1px dashed #333;">
+          <div class="col-md-12 col-xs-6" *ngIf="r.user.photo">
+            <div *ngIf="r.user.photo == null || r.user.photo == ''">
+              <i class="fa fa-user-circle user-icon"></i>
+            </div>
+            <div *ngIf="r.user.photo.url != null">
+              <div class="profile-picture" [ngStyle]="{'background-image': 'url(' + r.user.photo.url + ')'}">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 text-center col-xs-6">
+            <div class="row">
+              <h4>{{ r.user.name }}</h4>
+            </div>
+            <div class="row" *ngIf="r.user.address">
+              <div *ngIf="r.user.state">{{ r.user.address.state }},</div> <div *ngIf="r.user.country">{{ r.user.address.country }}</div>
+            </div>
+            <div class="row text-center">
+              <a [routerLink]="['/user', r.user.id]">Ver Pefil</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="col-md-3 col-md-offset-3 col-xs-6">
+            <button class="btn btn-custom-grey col-md-12">
+              Enviar Mensagem
+            </button>
+          </div>
+          <div class="col-md-3 col-xs-6">
+            <button class="btn btn-default col-md-12">
+              Cancelar
+            </button>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row finished" *ngIf="reservations_finished.length > 0">
+    <div class="row">
+      <div class="col-md-4 title">
+        <h4 class="title">Reservas Finalizadas</h4>
+      </div>
+    </div>
+    <div class="row reservation">
+      <div *ngFor="let r of reservations_finished">
+        <div class="col-md-6 col-xs-12">
+          <h4>{{ property.name }}</h4>
+          <h5>{{ property.address.city }}, {{ property.address.state }}, {{ property.address.country }}</h5>
+          <div class="date">
+            <div class="col-md-3">
+              <div class="row">
+                <b>Checkin Date</b>
+              </div>
+              <div class="row">
+                {{ r.checkin_date | date }}
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="row">
+                <b>Checkout Date</b>
+              </div>
+              <div class="row">
+                {{ r.checkout_date | date }}
+              </div>
+            </div>
+          </div>
+          <div class="">
+            <div class="col-md-3 price col-xs-6">
+              <div class="row">
+                R${{ property.price }} x {{ r.interval_of_days }}
+              </div>
+              <div class="row">
+                Taxa de Serviço
+              </div>
+              <div class="row">
+                <b>Total</b>
+              </div>
+            </div>
+            <div class="col-md-9 price col-xs-6">
+              <div class="row">
+                {{ property.price * r.interval_of_days | currency:"BRL":true }}
+              </div>
+              <div class="row">
+                {{ property.price * r.interval_of_days * 0.1 | currency:"BRL":true }}
+              </div>
+              <div class="row">
+                <b>{{ property.price * r.interval_of_days * 1.1 | currency:"BRL":true }}</b>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xs-12" style="border-left: 1px dashed #333;">
+          <div class="col-md-12 col-xs-6" *ngIf="r.user.photo">
+            <div *ngIf="r.user.photo == null || r.user.photo == ''">
+              <i class="fa fa-user-circle user-icon"></i>
+            </div>
+            <div *ngIf="r.user.photo.url != null">
+              <div class="profile-picture" [ngStyle]="{'background-image': 'url(' + r.user.photo.url + ')'}">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 text-center col-xs-6">
+            <div class="row">
+              <h4>{{ r.user.name }}</h4>
+            </div>
+            <div class="row" *ngIf="r.user.address">
+              <div *ngIf="r.user.state">{{ r.user.address.state }},</div> <div *ngIf="r.user.country">{{ r.user.address.country }}</div>
+            </div>
+            <div class="row text-center">
+              <a [routerLink]="['/user', r.user.id]">Ver Pefil</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
